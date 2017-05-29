@@ -1,4 +1,13 @@
 version: '3'
 services:
-  hello-world:
-    image: "hello-world"
+  food-mongodb:
+    image: "mongo:3.4.2"
+    volumes:
+      - food-mongodb-data-db:/data/db
+      - ./food-docker/docker-build/mongodb/mongod.conf:/etc/mongod.conf
+    ports:
+      - 27017:27017
+    command: mongod -f /etc/mongod.conf
+volumes:
+  food-mongodb-data-db:
+
